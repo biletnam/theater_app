@@ -9,13 +9,19 @@ describe Seat do
     expect(seats).to include(seat)
   end
 
-  it "signs up without a seat assigned" do
+  it "gets created without a row nor chair letter" do
+    user = User.new
+
+    expect(user.valid?).to be_false
+  end
+
+  it "gets created without a seat assigned" do
     seat = Seat.new(:row => "13")
 
     expect(seat.valid?).to be_false
   end
 
-  it "signs up without a row assigned" do
+  it "gets created without a row assigned" do
     seat = Seat.new(:chair_letter => "B")
 
     expect(seat.valid?).to be_false

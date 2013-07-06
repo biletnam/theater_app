@@ -9,6 +9,12 @@ describe User do
     expect(users).to include(user)
   end
 
+  it "signs up without an email" do
+    user = User.new
+
+    expect(user.valid?).to be_false
+  end
+
   it "signs up without an @ sign in email" do
     user = User.new(:email => "eric.example.com")
 

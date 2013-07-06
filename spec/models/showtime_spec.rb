@@ -9,6 +9,12 @@ describe Showtime do
     expect(showtimes).to include(showtime)
   end
 
+  it "gets created without a date nor a time" do
+    user = User.new
+
+    expect(user.valid?).to be_false
+  end
+
   it "gets created without a date" do
     showtime = Showtime.new(:start_time => "19:00")
 
