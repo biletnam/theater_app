@@ -5,12 +5,15 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+group :development do
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 gem 'pg'
-gem 'pry-rails'
-gem 'pry-debugger'
-gem 'meta_request'
-gem 'binding_of_caller'
-gem 'better_errors'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,4 +43,4 @@ gem 'rspec-rails', :group => [:development, :test]
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
