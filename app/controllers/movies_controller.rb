@@ -33,6 +33,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @showtimes = @movie.showtimes
 
     respond_to do |format|
       format.html # show.html.erb

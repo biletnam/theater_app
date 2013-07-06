@@ -1,6 +1,6 @@
 class SeatsController < ApplicationController
   def index
-    @seats = Seat.all
+    @showtime = Showtime.find(params[:showtime_id])
 
     respond_to do |format|
       format.html # index.html.erb

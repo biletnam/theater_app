@@ -5,8 +5,10 @@ TheaterApp::Application.routes.draw do
 
   resources :users
   resources :movies
-  resources :showtimes
-  resources :seats
+  resources :showtimes do
+    resources :seats
+  end
+
 
   root :to => "movies#index"
   # The priority is based upon order of creation:

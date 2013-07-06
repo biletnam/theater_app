@@ -17,7 +17,7 @@
 <% @showtimes.each do |showtime| %>
   <tr>
     <td><%= showtime.date %></td>
-    <td><%= showtime.time %></td>
+    <td><%= showtime.start_time %></td>
     <td><%= showtime.movie.name %></td>
     <td><%= link_to 'Show', showtime %></td>
     <td><%= link_to 'Edit', edit_movie_path(showtime) %></td>

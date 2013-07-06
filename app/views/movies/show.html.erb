@@ -9,6 +9,15 @@
   <%= @movie.name %>
 </p>
 
+<p>
+  <b>Showtimes:</b>
+  <% @showtimes.each do |showtime| %>
+    <%= showtime.date %> |
+    <%= link_to "#{showtime.start_time}", showtime_seats_path(showtime) %>
+  <% end %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back to All Movies', movies_path %>

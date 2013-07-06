@@ -13,18 +13,18 @@
     <th></th>
   </tr>
 
-<% @seats.each do |seat| %>
+<% @showtime.seats.each do |seat| %>
   <tr>
     <td><%= seat.row %></td>
     <td><%= seat.chair_letter %></td>
     <td><%= seat.showtime.date %> @ <%= seat.showtime.start_time %></td>
-    <td><%= link_to 'Show', seat %></td>
-    <td><%= link_to 'Edit', edit_seat_path(seat) %></td>
-    <td><%= link_to 'Destroy', seat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', @showtime_seat %></td>
+    <td><%= link_to 'Edit', edit_showtime_seat_path(@showtime, seat) %></td>
+    <td><%= link_to 'Destroy', @showtime_seat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Seat', new_seat_path %>
+<%= link_to 'New Seat', new_showtime_seat_path %>
