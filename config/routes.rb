@@ -3,8 +3,8 @@ TheaterApp::Application.routes.draw do
   # match "login" => 'sessions#new', :as => "login"
   # match "logout" => 'sessions#destroy', :as => "logout"
 
-  resources :movies
   resources :users
+  resources :movies
   resources :showtimes
   resources :seats
 
