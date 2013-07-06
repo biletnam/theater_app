@@ -1,2 +1,19 @@
 <h1>Seats#show</h1>
 <p>Find me in app/views/seats/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Row:</b>
+  <%= @seat.row %>
+</p>
+
+<p>
+  <b>Chair Letter:</b>
+  <%= @seat.row %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_seat_path(@seat) %> |
+<%= link_to 'Back to All Seats', seats_path %>

@@ -1,61 +1,12 @@
 TheaterApp::Application.routes.draw do
+  match "signup" => 'users#new', :as => "signup"
+  # match "login" => 'sessions#new', :as => "login"
+  # match "logout" => 'sessions#destroy', :as => "logout"
 
-
-  get "showtimes/index"
-
-  get "showtimes/new"
-
-  get "showtimes/create"
-
-  get "showtimes/show"
-
-  get "showtimes/edit"
-
-  get "showtimes/update"
-
-  get "showtimes/destroy"
-
-  get "seats/index"
-
-  get "seats/new"
-
-  get "seats/create"
-
-  get "seats/show"
-
-  get "seats/edit"
-
-  get "seats/update"
-
-  get "seats/destroy"
-
-  get "users/index"
-
-  get "users/new"
-
-  get "users/create"
-
-  get "users/show"
-
-  get "users/edit"
-
-  get "users/update"
-
-  get "users/destroy"
-
-  get "movies/index"
-
-  get "movies/new"
-
-  get "movies/create"
-
-  get "movies/show"
-
-  get "movies/edit"
-
-  get "movies/update"
-
-  get "movies/destroy"
+  resources :movies
+  resources :users
+  resources :showtimes
+  resources :seats
 
   root :to => "movies#index"
   # The priority is based upon order of creation:

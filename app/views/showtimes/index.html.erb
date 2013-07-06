@@ -1,2 +1,31 @@
 <h1>Showtimes#index</h1>
 <p>Find me in app/views/showtimes/index.html.erb</p>
+
+
+<h1>Listing Showtimes</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Movie</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @showtimes.each do |showtime| %>
+  <tr>
+    <td><%= showtime.date %></td>
+    <td><%= showtime.time %></td>
+    <td><%= showtime.movie.name %></td>
+    <td><%= link_to 'Show', showtime %></td>
+    <td><%= link_to 'Edit', edit_movie_path(showtime) %></td>
+    <td><%= link_to 'Destroy', showtime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Showtime', new_showtime_path %>

@@ -1,2 +1,25 @@
 <h1>Showtimes#show</h1>
 <p>Find me in app/views/showtimes/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @showtime.date %>
+</p>
+
+<p>
+  <b>Start Time:</b>
+  <%= @showtime.start_time %>
+</p>
+
+
+<p>
+  <b>Movie:</b>
+  <%= @showtime.movie.name %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_showtime_path(@showtime) %> |
+<%= link_to 'Back to All Showtime', showtimes_path %>

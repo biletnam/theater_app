@@ -1,2 +1,30 @@
 <h1>Seats#index</h1>
 <p>Find me in app/views/seats/index.html.erb</p>
+
+<h1>Listing Seats</h1>
+
+<table>
+  <tr>
+    <th>Row</th>
+    <th>Chair Letter</th>
+    <th>Showtime</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seats.each do |seat| %>
+  <tr>
+    <td><%= seat.row %></td>
+    <td><%= seat.chair_letter %></td>
+    <td><%= seat.showtime.date %> @ <%= seat.showtime.start_time %></td>
+    <td><%= link_to 'Show', seat %></td>
+    <td><%= link_to 'Edit', edit_seat_path(seat) %></td>
+    <td><%= link_to 'Destroy', seat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seat', new_seat_path %>

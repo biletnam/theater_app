@@ -1,2 +1,14 @@
 <h1>Movies#show</h1>
 <p>Find me in app/views/movies/show.html.erb</p>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @movie.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back to All Movies', movies_path %>
