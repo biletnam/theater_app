@@ -4,7 +4,7 @@ class Showtime < ActiveRecord::Base
   has_many :users, :through => :seats
 
 
-  attr_accessible :date, :start_time
+  attr_accessible :date, :start_time, :movie_id
   validates :date, :presence => true
   validates :start_time, :presence => true
 end
