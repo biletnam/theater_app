@@ -1,5 +1,17 @@
 require 'spec_helper'
 
 describe Movie do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "gets created" do
+    movie = Movie.new(:name => "Titanic")
+    movie.save
+
+    movies = Movie.all
+    expect(movies).to include(movie)
+  end
+
+  it "gets created without a name" do
+    movie = Movie.new
+
+    expect(movie.valid?).to be_false
+  end
 end

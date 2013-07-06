@@ -1,3 +1,6 @@
 class Seat < ActiveRecord::Base
-  attr_accessible :row, :seat, :showtime_id, :user_id
+  belongs_to :showtime
+  belongs_to :user
+
+  attr_accessible :row, :chair_letter, :showtime_id, :user_id
 end

@@ -1,3 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password_digest
+  has_secure_password
+
+  has_many :seats
+  has_many :showtimes, :through => :seats
+
+  attr_accessible :email, :password, :password_confirmation
+
+  validates :email, :uniqueness => true
+  validates :email, :format => /@/
 end

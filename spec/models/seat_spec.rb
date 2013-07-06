@@ -1,5 +1,23 @@
 require 'spec_helper'
 
 describe Seat do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "gets created" do
+    seat = Seat.new(:row => "12", :chair_letter => "C")
+    seat.save
+
+    seats = Seat.all
+    expect(seats).to include(seat)
+  end
+
+  it "signs up without a seat assigned" do
+    seat = Seat.new(:row => "13")
+
+    expect(seat.valid?).to be_false
+  end
+
+  it "signs up without a row assigned" do
+    seat = Seat.new(:chair_letter => "B")
+
+    expect(seat.valid?).to be_false
+  end
 end
