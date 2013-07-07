@@ -9,7 +9,8 @@
   <tr>
     <th>Row</th>
     <th>Chair Letter</th>
-    <th></th>
+    <th>Reservation Status</th>
+    <!-- <th></th> -->
     <!-- <th></th> -->
     <!-- <th></th> -->
   </tr>
@@ -19,7 +20,14 @@
   <tr>
     <td><%= seat.row %></td>
     <td><%= seat.chair_letter %></td>
-    <td><%= link_to 'Show', [@showtime, seat] %></td>
+    <td>
+      <% if !seat.user_id.nil? %>
+        Reserved by: <%= seat.user.email %>
+      <% else %>
+        <%= link_to "Reserve this seat!", [@showtime, seat] %>
+      <% end %>
+    </td>
+    <!-- <td><%#= link_to 'Show', [@showtime, seat] %></td> -->
     <!-- <td><%#= link_to 'Edit', [:edit, @showtime, seat] %></td> -->
     <!-- <td><%#= link_to 'Destroy', [@showtime, seat], method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
   </tr>

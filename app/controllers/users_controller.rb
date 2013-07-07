@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
  skip_before_filter :require_authentication, :only => [:new, :create]
- skip_before_filter :require_admin_authentication, :only => [:show, :new, :create, :edit, :update]
+ skip_before_filter :require_admin_authentication, :only => [:new, :create, :edit, :update, :show]
 
 
   def index
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     @seats = Seat.where(:user_id => [@user.id])
 
     respond_to do |format|
@@ -52,11 +52,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

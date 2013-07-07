@@ -17,6 +17,8 @@
           <% if current_user %>
             <li><a href="#">Logged in as <%= current_user.email %></a></li>
             <li class="divider"></li>
+            <li><a href="#"><%= link_to "My Reservations", user_path(current_user) %></a></li>
+            <li class="divider"></li>
             <li><%= link_to "Log Out", logout_path %></li>
             <li class="divider"></li>
           <% else %>
