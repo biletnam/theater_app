@@ -8,6 +8,28 @@
   <%= @user.email %>
 </p>
 
+<table>
+  <tr>
+    <th>Movie</th>
+    <th>Showtime</th>
+    <th>Seat</th>
+    <th></th>
+    <!-- <th></th> -->
+    <!-- <th></th> -->
+  </tr>
+
+<% @seats.each do |seat| %>
+  <tr>
+    <td><%= seat.showtime.movie.name %></td>
+    <td><%= seat.showtime.date %> | <%= seat.showtime.start_time %></td>
+    <td>Row: <%= seat.row %> | Chair: <%= seat.chair_letter %></td>
+    <td><%= link_to 'Show', [seat.showtime, seat] %></td>
+    <!-- <td><%#= link_to 'Edit', [:edit, seat.showtime, seat] %></td> -->
+    <!-- <td><%#= link_to 'Destroy', [seat.showtime, seat], method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+  </tr>
+<% end %>
+</table>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back to All Movies', movies_path %>

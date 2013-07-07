@@ -53,8 +53,8 @@ class SeatsController < ApplicationController
 
     if !session[:user_id].blank?  #if the session has started i.e. the customer is logged in
       @user = User.find(session[:user_id])  #grab the user object
-      @seat.update_attribute(:user_id => @user.id) #add user id to seat object
-      redirect_to [@showtime, @seat]
+      @seat.update_attributes(:user_id => @user.id) #add user id to seat object
+      redirect_to [@showtime, @seat], :notice => "Nice! You have reserved this seat."
     else
       @user = User.new
       @seat = Seat.find(params[:id]) #if not logged in, grab the seat object to be used after the login..

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
  skip_before_filter :require_authentication, :only => [:new, :create]
- skip_before_filter :require_admin_authentication, :only => [:new, :create, :edit, :update]
+ skip_before_filter :require_admin_authentication, :only => [:show, :new, :create, :edit, :update]
 
 
   def index
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         if !params[:seat_id].nil?
           @seat = Seat.find(params[:seat_id]) #if a seat param comes in (i.e. page was rendered from a non-logged-in user that wanted to sign up)
-          @seat.update_attribute(:user_id => @user.id) #add user id to seat object
+          @seat.update_attributes(:user_id => @user.id) #add user id to seat object
         end
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.js
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @seats = Seat.where(:user_id => [@user.id])
 
     respond_to do |format|
       format.html # show.html.erb

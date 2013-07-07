@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       if !params[:seat_id].nil?
         @seat = Seat.find(params[:seat_id]) #if a seat param comes in (i.e. page was rendered from a non-logged-in user that wanted to sign up)
-        @seat.update_attribute(:user_id => @user.id) #add user id to seat object
+        @seat.update_attributes(:user_id => user.id) #add user id to seat object
       end
-      redirect_to [@showtime, @seat], :notice => "Nice! You logged in."
+      redirect_to user_path(user), :notice => "Nice! You logged in."
     else
       flash.now[:alert] = "Your email or password are not correct."
       render :new
