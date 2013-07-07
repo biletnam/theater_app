@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: seats
+#
+#  id           :integer          not null, primary key
+#  row          :string(255)
+#  chair_letter :string(255)
+#  user_id      :integer
+#  showtime_id  :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Seat do

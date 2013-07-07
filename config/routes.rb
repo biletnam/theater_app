@@ -1,13 +1,16 @@
 TheaterApp::Application.routes.draw do
   match "signup" => 'users#new', :as => "signup"
-  # match "login" => 'sessions#new', :as => "login"
-  # match "logout" => 'sessions#destroy', :as => "logout"
+  match "login" => 'sessions#new', :as => "login"
+  match "logout" => 'sessions#destroy', :as => "logout"
+
+  get "showtimes/:showtime_id/seats/:id/save/" => 'seats#save', :as => 'save_seat'
 
   resources :users
   resources :movies
   resources :showtimes do
     resources :seats
   end
+  resources :sessions, :except => [:edit, :update, :index]
 
 
   root :to => "movies#index"
