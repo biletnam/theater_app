@@ -13,6 +13,11 @@
   <%= @seat.chair_letter %>
 </p>
 
+<%if @seat.user_id.blank? == false %>
+  <div><%= link_to 'Reserve Seat', save_seat_path(:user => {:seat_id => @seat.id}) %></div>
+<% else %>
+    <div>This seat is already reserved by <%= @seat.user.email %></div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_showtime_seat_path(@showtime, @seat) %> |

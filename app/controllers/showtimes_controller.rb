@@ -1,4 +1,8 @@
 class ShowtimesController < ApplicationController
+
+  skip_before_filter :require_authentication
+  skip_before_filter :require_admin_authentication
+
   def index
     @showtimes = Showtime.all
 

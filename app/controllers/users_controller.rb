@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  skip_before_filter :require_authentication, :only => [:new, :create]
+  skip_before_filter :require_admin_authentication, :only => [:new, :create, :edit, :update]
+
   def index
     @users = User.all
 
@@ -22,6 +26,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
+        if !params[:seat_id].nil?
+          @seat = Seat.find(params[:seat_id]) #if a seat param comes in (i.e. page was rendered from a non-logged-in user that wanted to sign up)
+          @seat.update_attribute(:user_id => @user.id) #add user id to seat object
+        end
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.js
       else

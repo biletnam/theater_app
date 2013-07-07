@@ -1,4 +1,8 @@
 class SeatsController < ApplicationController
+
+  skip_before_filter :require_authentication
+  skip_before_filter :require_admin_authentication
+
   def index
     @showtime = Showtime.find(params[:showtime_id])
 
@@ -40,6 +44,21 @@ class SeatsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.js
+    end
+  end
+
+  def save
+    @seat = Seat.find(params[:id])
+    @showtime = Showtime.find(params[:showtime_id])
+
+    if !session[:user_id].blank?  #if the session has started i.e. the customer is logged in
+      @user = User.find(session[:user_id])  #grab the user object
+      @seat.update_attribute(:user_id => @user.id) #add user id to seat object
+      redirect_to [@showtime, @seat]
+    else
+      @user = User.new
+      @seat = Seat.find(params[:id]) #if not logged in, grab the seat object to be used after the login..
+      render new_session_path
     end
   end
 
