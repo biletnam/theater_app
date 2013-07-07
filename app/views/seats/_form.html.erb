@@ -1,4 +1,4 @@
-<%= form_for(@seat) do |f| %>
+<%= form_for([@showtime, @seat]) do |f| %>
   <% if @seat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@seat.errors.count, "error") %> prohibited this seat from being saved:</h2>
@@ -19,6 +19,9 @@
     <%= f.label :chair_letter %><br />
     <%= f.text_field :chair_letter %>
   </div>
+
+    <input type="hidden" name="seat[showtime_id]" value="<%= @showtime.id %>">
+
   <div class="actions">
     <%= f.submit %>
   </div>

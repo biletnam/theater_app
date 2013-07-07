@@ -10,10 +10,10 @@
 
 <p>
   <b>Chair Letter:</b>
-  <%= @seat.row %>
+  <%= @seat.chair_letter %>
 </p>
 
 
 
-<%= link_to 'Edit', edit_seat_path(@seat) %> |
-<%= link_to 'Back to All Seats', seats_path %>
+<%= link_to 'Edit', edit_showtime_seat_path(@showtime, @seat) %> |
+<%= link_to 'Back to All Seats', showtime_seats_path %>

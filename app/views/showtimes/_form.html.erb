@@ -19,6 +19,11 @@
     <%= f.label :start_time %><br />
     <%= f.time_select :start_time %>
   </div>
+  <div class="field">
+    <%= f.label :movie_id %><br />
+    <%= f.select :movie_id, options_from_collection_for_select(@movies, 'id', 'name')  %>
+
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

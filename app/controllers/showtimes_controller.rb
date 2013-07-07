@@ -10,6 +10,7 @@ class ShowtimesController < ApplicationController
 
   def new
     @showtime = Showtime.new
+    @movies = Movie.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +43,7 @@ class ShowtimesController < ApplicationController
 
   def edit
     @showtime = Showtime.find(params[:id])
+    @movies = Movie.all
   end
 
   def update

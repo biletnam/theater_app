@@ -11,7 +11,7 @@
     <th></th>
   </tr>
 
-<% @movies.each do |movie| %>
+<% @movies.sort.each do |movie| %>
   <tr>
     <td><%= movie.name %></td>
     <td><%= link_to 'Show', movie %></td>
