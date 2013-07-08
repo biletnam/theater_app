@@ -1,7 +1,7 @@
 class SeatsController < ApplicationController
 
   skip_before_filter :require_authentication
-  skip_before_filter :require_admin_authentication
+  skip_before_filter :require_admin_authentication, :except => [:new, :create, :edit, :update, :destroy]
 
   def index
     @showtime = Showtime.find(params[:showtime_id])

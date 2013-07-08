@@ -12,8 +12,8 @@
 <p>
   <b>Showtimes:</b>
   <% @showtimes.each do |showtime| %>
-    <%= showtime.date %> |
-    <%= link_to "#{showtime.start_time}", showtime_seats_path(showtime) %>
+    <p><%= showtime.date %> |
+    <%= link_to "#{showtime.start_time}", showtime_seats_path(showtime) %></p>
   <% end %>
 </p>
 
