@@ -5,6 +5,10 @@
 
 <h2>For the showing of <%= @showtime.movie.name %> on <%= @showtime.date %> at <%= @showtime.start_time %></h2>
 
+<%= link_to 'Back to all Showtimes', movie_path(@showtime.movie) %>
+<br>
+<br>
+
 <div id="theater">
   <h2>Front of Theater</h2>
   <br>
@@ -12,17 +16,17 @@
       <% @showtime_seats_array.each do |seat| %>
         <div class="seat">
            <% if !seat.user_id.nil? %>
-                <img id="ticket<%= seat.id %>" class="reserved" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
+                <img id="<%= seat.id %>" class="reserved" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
            <% else %>
-                <img id="ticket<%= seat.id %>" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
+                <img id="<%= seat.id %>" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
            <% end %>
 
             <%= seat.row %>-<%= seat.chair_letter %>
 
           <% if !seat.user_id.nil? %>
-            <%= link_to "Reserved", [@showtime, seat] %>
+            <%= link_to "Reserved - Info", [@showtime, seat] %>
           <% else %>
-            <%= link_to "Buy!", [@showtime, seat] %>
+            <%= link_to 'Buy!', save_seat_path(@showtime, seat) %>
           <% end %>
         </div>
       <% end %>
