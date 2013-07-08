@@ -5,35 +5,46 @@
 
 <h2>For the showing of <%= @showtime.movie.name %> on <%= @showtime.date %> at <%= @showtime.start_time %></h2>
 
-<table>
+<div id="theater">
+  <h2>Front of Theater</h2>
+  <br>
+  <div id="seats_container">
+      <% @showtime_seats_array.each do |seat| %>
+        <div class="seat">
+           <img alt="<%= seat.id %>"/>
+            <%= seat.row %>-<%= seat.chair_letter %>
+          <% if !seat.user_id.nil? %>
+            Reserved: <%= seat.user.email %>
+          <% else %>
+            <%= link_to "Reserve!", [@showtime, seat] %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- <table>
   <tr>
     <th>Row</th>
     <th>Chair Letter</th>
-    <th>Reservation Status</th>
-    <!-- <th></th> -->
-    <!-- <th></th> -->
-    <!-- <th></th> -->
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 
-<% @showtime.seats.sort_by.each do |seat| %>
+<%# @showtime_seats_array.each do |seat| %>
   <tr>
-    <td><%= seat.row %></td>
-    <td><%= seat.chair_letter %></td>
-    <td>
-      <% if !seat.user_id.nil? %>
-        Reserved by: <%= seat.user.email %>
-      <% else %>
-        <%= link_to "Reserve this seat!", [@showtime, seat] %>
-      <% end %>
-    </td>
-    <!-- <td><%#= link_to 'Show', [@showtime, seat] %></td> -->
-    <!-- <td><%#= link_to 'Edit', [:edit, @showtime, seat] %></td> -->
-    <!-- <td><%#= link_to 'Destroy', [@showtime, seat], method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+    <td><%#= seat.row %></td>
+    <td><%#= seat.chair_letter %></td>
+    <td><%#= link_to 'Show', [@showtime, seat] %></td>
+    <td><%#= link_to 'Edit', [:edit, @showtime, seat] %></td>
+   <td><%#= link_to 'Destroy', [@showtime, seat], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+<%# end %>
 </table>
 
-<br />
+<br /> -->
 
 <!-- <%#= link_to 'New Seat', new_showtime_seat_path %> -->

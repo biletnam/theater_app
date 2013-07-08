@@ -5,6 +5,9 @@ class SeatsController < ApplicationController
 
   def index
     @showtime = Showtime.find(params[:showtime_id])
+    @showtime_seats_array = @showtime.seats.sort{
+      |a,b| (a.row == b.row) ? a.chair_letter <=> b.chair_letter : a.row <=> b.row
+    }
 
     respond_to do |format|
       format.html # index.html.erb
