@@ -4,7 +4,9 @@ class SeatsController < ApplicationController
   skip_before_filter :require_admin_authentication, :except => [:new, :create, :edit, :update, :destroy]
 
   def index
+    @user = User.find(session[:user_id])
     @showtime = Showtime.find(params[:showtime_id])
+
     @showtime_seats_array = @showtime.seats.sort{
       |a,b| (a.row == b.row) ? a.chair_letter <=> b.chair_letter : a.row <=> b.row
     }

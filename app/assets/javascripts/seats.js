@@ -1,3 +1,14 @@
+$(document).ready(function(){
+
+
+  $("body").on("click", ".seat img", function(e){
+    $(this).next("a").click();
+  });
+});
+
+
+
+
 // If I want to create ability for user to select multiple seats with JS (instead of many AJAX calls)
 // use below, but need to add final function to send "selected" to the save_seat_path
 

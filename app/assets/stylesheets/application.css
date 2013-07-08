@@ -76,3 +76,8 @@
 img.reserved {
   background-color: white;
 }
+
+img.reserved.active {
+  background-color: green;
+}
+
