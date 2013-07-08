@@ -32,7 +32,11 @@
               <%= link_to "Reserved - Info", [@showtime, seat] %>
             <% end %>
           <% else %>
-            <%= link_to 'Buy!', save_seat_path(@showtime, seat), :remote => true %>
+            <% if current_user != nil %>
+              <%= link_to 'Buy!', save_seat_path(@showtime, seat), :remote => true %>
+            <% else %>
+              <%= link_to 'Buy!', save_seat_path(@showtime, seat)%>
+            <% end %>
           <% end %>
         </div>
       <% end %>

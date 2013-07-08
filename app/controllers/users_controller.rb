@@ -45,6 +45,10 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
     @seats = Seat.where(:user_id => [@user.id])
 
+    @seats_array = @seats.sort{
+      |a,b| (a.showtime.date == b.showtime.date) ? a.showtime.movie.name <=> b.showtime.movie.name : a.showtime.date <=> b.showtime.date
+    }
+
     respond_to do |format|
       format.html # show.html.erb
       format.js

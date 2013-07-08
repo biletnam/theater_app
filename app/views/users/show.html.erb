@@ -19,7 +19,7 @@
     <!-- <th></th> -->
   </tr>
 
-<% @seats.each do |seat| %>
+<% @seats_array.each do |seat| %>
   <tr>
     <td><%= seat.showtime.movie.name %></td>
     <td><%= seat.showtime.date %> | <%= seat.showtime.start_time %></td>

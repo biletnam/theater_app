@@ -4,7 +4,12 @@ class SeatsController < ApplicationController
   skip_before_filter :require_admin_authentication, :except => [:new, :create, :edit, :update, :destroy]
 
   def index
-    @user = User.find(session[:user_id])
+    if !session[:user_id].nil?
+      @user = User.find(session[:user_id])
+    else
+      @user = User.new
+    end
+
     @showtime = Showtime.find(params[:showtime_id])
 
     @showtime_seats_array = @showtime.seats.sort{
@@ -65,9 +70,12 @@ class SeatsController < ApplicationController
           format.js #save.js.erb
         end
       else
-        @user = User.new
-        @seat = Seat.find(params[:id]) #if not logged in, grab the seat object to be used after the login..
-        render new_session_path
+        respond_to do |format|
+          @user = User.new
+          @seat = Seat.find(params[:id]) #if not logged in, grab the seat object to be used after the login..
+          format.html { render new_session_path, :notice => "Please log in to reserve this seat." }
+          format.js #save.js.erb
+        end
       end
     else
       redirect_to root_path, :notice => "That seat is already reserved."
