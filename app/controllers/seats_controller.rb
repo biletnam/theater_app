@@ -56,9 +56,12 @@ class SeatsController < ApplicationController
 
     if @seat.user_id.nil? #to make sure you can't "grab" someones already reserved ticket by going to the /save url
       if !session[:user_id].blank?  #if the session has started i.e. the customer is logged in
-        @user = User.find(session[:user_id])  #grab the user object
-        @seat.update_attributes(:user_id => @user.id) #add user id to seat object
-        redirect_to [@showtime, @seat], :notice => "Nice! You have reserved this seat."
+        respond_to do |format|
+          @user = User.find(session[:user_id])  #grab the user object
+          @seat.update_attributes(:user_id => @user.id) #add user id to seat object
+          format.html { redirect_to showtime_seats_path, :notice => "Nice! You have reserved this seat." }
+          format.js #save.js.erb
+        end
       else
         @user = User.new
         @seat = Seat.find(params[:id]) #if not logged in, grab the seat object to be used after the login..
