@@ -14,6 +14,7 @@
     <th>Showtime</th>
     <th>Seat</th>
     <th></th>
+    <th></th>
     <!-- <th></th> -->
     <!-- <th></th> -->
   </tr>
@@ -24,6 +25,7 @@
     <td><%= seat.showtime.date %> | <%= seat.showtime.start_time %></td>
     <td>Row: <%= seat.row %> | Chair: <%= seat.chair_letter %></td>
     <td><%= link_to 'Show', [seat.showtime, seat] %></td>
+    <td><%= link_to 'Give Up Ticket', give_up_seat_path(seat.showtime, seat) %></td>
     <!-- <td><%#= link_to 'Edit', [:edit, seat.showtime, seat] %></td> -->
     <!-- <td><%#= link_to 'Destroy', [seat.showtime, seat], method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
   </tr>
@@ -31,5 +33,5 @@
 </table>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit your Account Settings', edit_user_path(@user) %> |
 <%= link_to 'Back to All Movies', movies_path %>

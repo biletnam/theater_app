@@ -85,6 +85,21 @@ class SeatsController < ApplicationController
     end
   end
 
+  def give_up_seat
+    @user = User.find(session[:user_id])
+    @seat = Seat.find(params[:id])
+
+    respond_to do |format|
+      if @seat.update_attributes(:user_id => "")
+        format.html { redirect_to @user, notice: 'Seat was successfully given up.' }
+        format.js
+      else
+        format.html { render action: "show" }
+        format.js
+      end
+    end
+  end
+
   def destroy
     @showtime = Showtime.find(params[:showtime_id])
     @seat = Seat.find(params[:id])

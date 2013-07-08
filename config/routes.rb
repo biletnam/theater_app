@@ -4,6 +4,7 @@ TheaterApp::Application.routes.draw do
   match "logout" => 'sessions#destroy', :as => "logout"
 
   get "showtimes/:showtime_id/seats/:id/save/" => 'seats#save', :as => 'save_seat'
+  get "showtimes/:showtime_id/seats/:id/give_up_seat/" => 'seats#give_up_seat', :as => 'give_up_seat'
 
   resources :users
   resources :movies

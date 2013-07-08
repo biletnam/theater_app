@@ -11,15 +11,18 @@
   <div id="seats_container">
       <% @showtime_seats_array.each do |seat| %>
         <div class="seat">
-          <!-- The following link needs updated into a rails variable form -->
-           <a href="/showtimes/<%= @showtime.id %>/seats/<%= seat.id %>">
-              <img id="ticket<%= seat.id %>" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
-           </a>
+           <% if !seat.user_id.nil? %>
+                <img id="ticket<%= seat.id %>" class="reserved" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
+           <% else %>
+                <img id="ticket<%= seat.id %>" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
+           <% end %>
+
             <%= seat.row %>-<%= seat.chair_letter %>
+
           <% if !seat.user_id.nil? %>
-            Reserved
+            <%= link_to "Reserved", [@showtime, seat] %>
           <% else %>
-            <%= link_to "Reserve!", [@showtime, seat] %>
+            <%= link_to "Buy!", [@showtime, seat] %>
           <% end %>
         </div>
       <% end %>
