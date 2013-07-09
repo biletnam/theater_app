@@ -1,14 +1,5 @@
 $(document).ready(function(){
-  console.log('hi!');
-  // $("body").on("click", ".seat", function(e){
 
-  // });
-
-  // console.log('!');
-  // $("body").on("click", ".seat img", function(e){
-  //   console.log('click');
-  //   $(this).next("a").click();
-  // });
 });
 
 // If I want to create ability for user to select multiple seats with JS (instead of many AJAX calls)
