@@ -31,7 +31,6 @@
   width:940px;
   padding:60px;
   padding-top: 20px;
-  height:930px;
   position:absolute;
   top:50%;
   left:40%;
@@ -56,28 +55,28 @@
   padding-top: 20px;
 }
 
-#theater > #seats_container > .seat {
+#theater > #seats_container > a.seat {
   display:block;
   float:left;
-  height:50px;
-  width:50px;
-  margin-top:60px;
-  margin-right:60px;
+  width:80px;
+  height:130px;
+  margin-top:10px;
+  margin-right:26px;
   border-radius:10%;
+  text-align: center;
 
 }
-
 .seat img {
-  background-color: red;
   width: 50px;
   height: 50px;
+  border:10px solid red;
 }
 
-img.reserved {
-  background-color: white;
+.reserved img {
+  border:10px solid white;
 }
 
-img.reserved.active {
-  background-color: green;
+.reserved.active img {
+border:10px solid green;
 }
 

@@ -13,36 +13,12 @@
   <h2>Front of Theater</h2>
   <br>
   <div id="seats_container">
-      <% @showtime_seats_array.each do |seat| %>
-        <div class="seat">
-           <% if !seat.user_id.nil? %>
-              <% if seat.user_id == @user.id  %>
-                <img id="<%= seat.id %>" class="reserved active" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
-              <% else %>
-                <img id="<%= seat.id %>" class="reserved" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
-              <% end %>
-           <% else %>
-              <img id="<%= seat.id %>" alt="<%= seat.row %>-<%= seat.chair_letter %>" />
-           <% end %>
 
-          <% if !seat.user_id.nil? %>
-            <% if seat.user_id == @user.id  %>
-              <%= link_to "All Yours!", [@showtime, seat] %>
-            <% else %>
-              <%= link_to "Reserved - Info", [@showtime, seat] %>
-            <% end %>
-          <% else %>
-            <% if current_user != nil %>
-              <%= link_to 'Buy!', save_seat_path(@showtime, seat), :remote => true %>
-            <% else %>
-              <%= link_to 'Buy!', save_seat_path(@showtime, seat)%>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% @showtime_seats_array.each do |seat| %>
+      <%= make_seat(seat) %>
+    <% end %>
+
   </div>
-</div>
 
 
 

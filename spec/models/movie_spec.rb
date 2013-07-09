@@ -24,4 +24,11 @@ describe Movie do
 
     expect(movie.valid?).to be_false
   end
+
+
+  it "has many showings" do
+    movie = Movie.create(title: "Titanic")
+    showing = movie.showings.create(:date "2013-07-10 12:30:00")
+  end
+
 end

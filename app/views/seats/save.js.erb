@@ -1,6 +1,1 @@
-var purchased_seat_img = $(".seat img#<%= @seat.id %>");
-
-
-purchased_seat_img.addClass("reserved active");
-purchased_seat_img.next("a").after('<a href="/showtimes/<%= @showtime.id %>/seats/<%= @seat.id %>">All Yours!</a>');
-purchased_seat_img.next("a").remove();
+$("#seat<%= @seat.id %>").replaceWith('<%= make_seat(@seat) %>');

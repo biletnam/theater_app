@@ -38,4 +38,8 @@ describe Showtime do
 
     expect(showtime.valid?).to be_false
   end
+
+  it "has seats available"
+  do
+
 end
