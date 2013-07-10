@@ -30,6 +30,7 @@ describe Movie do
     movie = FactoryGirl.create(:movie)
     showtime = FactoryGirl.create(:showtime, :movie_id => movie.id)
 
+    expect(movie.poster).to_not be_nil
     expect(movie.showtimes).to include(showtime)
   end
 end

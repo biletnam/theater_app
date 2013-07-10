@@ -10,6 +10,11 @@
 </p>
 
 <p>
+  <b>Poster:</b>
+  <%= image_tag @movie.poster %>
+</p>
+
+<p>
   <b>Showtimes:</b>
   <% @showtimes.each do |showtime| %>
     <p><%= showtime.date %> |

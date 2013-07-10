@@ -7,6 +7,7 @@ FactoryGirl.define do
 
   factory :movie do
     name "Sommer vorm Balkon"
+    poster File.open(File.join(Rails.root, '/public/sample.jpg'))
   end
 
   factory :showtime do
