@@ -11,6 +11,9 @@
 class Movie < ActiveRecord::Base
   has_many :showtimes
 
-  attr_accessible :name
+  attr_accessible :name, :poster
+
+  mount_uploader :poster, ImageUploader
+
   validates :name, :presence => true
 end
