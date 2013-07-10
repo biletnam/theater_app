@@ -20,4 +20,10 @@ class Showtime < ActiveRecord::Base
   validates :date, :presence => true
   validates :start_time, :presence => true
   validates :movie_id, :presence => true
+
+  def available_seats?
+    unreserved_seats = self.seats.where(:user_id => nil)
+
+    unreserved_seats.length > 0
+  end
 end

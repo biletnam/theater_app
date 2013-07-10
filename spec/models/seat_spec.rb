@@ -22,7 +22,7 @@ describe Seat do
     expect(seats).to include(seat)
   end
 
-  it "gets created without a row nor chair letter" do
+  it "gets created with neither a row nor chair letter" do
     user = User.new
 
     expect(user.valid?).to be_false
@@ -39,4 +39,17 @@ describe Seat do
 
     expect(seat.valid?).to be_false
   end
+
+  it "can be purchased" do
+    seat = FactoryGirl.create(:seat)
+
+    expect(seat.available?).to be_true
+ end
+
+  it "cannot be purchased" do
+    seat = FactoryGirl.create(:reserved_seat)
+
+    expect(seat.available?).to be_false
+  end
+
 end

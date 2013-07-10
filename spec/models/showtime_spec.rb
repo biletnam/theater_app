@@ -14,7 +14,8 @@ require 'spec_helper'
 
 describe Showtime do
   it "gets created" do
-    showtime = Showtime.new(:date => "07/04/2013", :start_time => "16:00")
+    movie = Movie.create(:name => "The Godfather")
+    showtime = movie.showtimes.create(:date => "07/04/2013", :start_time => "16:00:00")
     showtime.save
 
     showtimes = Showtime.all
@@ -22,9 +23,9 @@ describe Showtime do
   end
 
   it "gets created without a date nor a time" do
-    user = User.new
+    showtime = Showtime.new
 
-    expect(user.valid?).to be_false
+    expect(showtime.valid?).to be_false
   end
 
   it "gets created without a date" do
@@ -39,7 +40,18 @@ describe Showtime do
     expect(showtime.valid?).to be_false
   end
 
-  it "has seats available"
-  do
+  it "has seats available" do
+    seat = FactoryGirl.create(:seat)
+    showtime = seat.showtime
+
+    expect(showtime.available_seats?).to be_true
+  end
+
+  it "is sold out" do
+    seat = FactoryGirl.create(:reserved_seat)
+    showtime = seat.showtime
+
+    expect(showtime.available_seats?).to be_false
+  end
 
 end

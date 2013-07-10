@@ -13,12 +13,24 @@
 require 'spec_helper'
 
 describe User do
-  it "signs up" do
-    user = User.new(:email => "eric@example.com")
-    user.save
 
-    users = User.all
-    expect(users).to include(user)
+  it "authenticates with a valid email and password" do
+    @user = FactoryGirl.create(:user)
+
+    expect(@user.authenticate("foobar")).to eq(@user)
+  end
+
+  it "authenticates with an incorrect password" do
+    @user = FactoryGirl.create(:user)
+
+    expect(@user.authenticate("incorrect")).to be_false
+  end
+
+  it "reserves a seat to a showtime" do
+    @user = FactoryGirl.create(:user)
+    seat = FactoryGirl.create(:reserved_seat, :user_id => @user.id)
+
+    expect(@user.seats).to include(seat)
   end
 
   it "signs up without an email" do
@@ -28,8 +40,10 @@ describe User do
   end
 
   it "signs up without an @ sign in email" do
-    user = User.new(:email => "eric.example.com")
+    user = User.new(:email => "eric.example.com", :password =>"foobar", :password_confirmation =>"foobar")
 
     expect(user.valid?).to be_false
   end
+
+
 end

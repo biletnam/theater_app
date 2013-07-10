@@ -26,9 +26,10 @@ describe Movie do
   end
 
 
-  it "has many showings" do
-    movie = Movie.create(title: "Titanic")
-    showing = movie.showings.create(:date "2013-07-10 12:30:00")
-  end
+  it "has many showtimes" do
+    movie = FactoryGirl.create(:movie)
+    showtime = FactoryGirl.create(:showtime, :movie_id => movie.id)
 
+    expect(movie.showtimes).to include(showtime)
+  end
 end
