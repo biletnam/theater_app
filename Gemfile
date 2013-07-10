@@ -32,6 +32,7 @@ gem 'annotate'
 gem 'jquery-rails'
 
 group :test, :development do
+  gem 'nokogiri', '1.5.0'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'
@@ -44,7 +45,7 @@ end
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -52,6 +53,6 @@ end
 # To use debugger
 gem 'debugger'
 
+gem "fog", "~> 1.12.1"
 gem 'rmagick'
 gem 'carrierwave'
-

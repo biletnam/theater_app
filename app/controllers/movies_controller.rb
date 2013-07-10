@@ -39,6 +39,8 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @showtimes = @movie.showtimes
 
+    puts "#{ENV['AWS_ID']} ---- #{ENV['AWS_SECRET']}"
+
     respond_to do |format|
       format.html # show.html.erb
       format.js
