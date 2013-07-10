@@ -6,7 +6,7 @@ FactoryGirl.define do
   end
 
   factory :movie do
-    name "The Godfather"
+    name "Sommer vorm Balkon"
   end
 
   factory :showtime do
